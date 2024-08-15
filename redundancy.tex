@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[
+backend=bibtex,
+style=authoryear-comp,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{database.bib} %Import the bibliography file
+
+\title{Redundancy of natural languages}
+\author{Yajna Devam}
+\date{August 2024}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+    Natural languages have a redundancy close to 0.7. We explore the reasons driving this and derive its optimal value of $1 - \frac{1}{e}$.
+\end{abstract}
+
+\section{Introduction}
+
+Human language is essentially an encoding of auditory symbols. The vocal chords encode information into auditory symbols and the ears decode them. However, the information has a high amount of redundancy. Most human languages can be compressed to 30\% of the original size, meaning that 70\% of the symbols are redundant.
+
+\section{The organs of speech}
+Unlike sound perception, which evolved billions of years ago, speech is relatively a very recent invention. Sound is a serial medium and the brain has to process the information as a stream, one phoneme after another. This is unlike vision, which is 3-dimensional and can be processed in parallel. Every person actually speaks their own idiolect and has a slightly different pronunciation from everyone else. Every person encodes a phoneme, that is, articulates a phoneme slightly differently, even without accounting for marginal effects like lisps and baby talk. The human brain has to distinguish phonemes apart from those similar to it. This is the reason, we have a hard time understanding people with unfamiliar accents.
+
+\section{Encoding information into words}
+In theory, we can encode every word as CVCC, which at 20 consonants and 5 vowels gives us 40,000 words. This is not unusual since words like \emph{DUSK, WONT, BURN} are fairly common. Some others like \emph{WUJK, TOHP} etc may seem unusual but they are fairly pronunciable and recognizable. Every word in this language would be a one syllable word and would be a moderate sized language. This would be fairly taxing on human memory because it would be impractical to organize tenses, declensions, plurals etc. as similar words.
+
+Let us assume that this language does not need to evolve and adapt. Lets suppose we use the vowels A, E, I to represent the past, the present and the future for verbs and use the O, U vowels for different noun declensions. This language is incredibly compact and has high information density and essentially has zero redundancy. 
+
+\section{The problem of noise}
+
+Our special language won't be stable over large groups for even a moderate amount of time. Even in perfectly calm surroundings, the speech of such a language will suffer from noise and the speaker will have to repeat their words. The listener could have a hard time distinguishing voiced/unvoiced \emph{BOST/BOZT}, vowel qualities \emph{VIDD/VEDD} and so on.
+
+\section{Redundancy}
+
+Noise in data transmission is mitigated by adding redundancy such as parity bits and error-correcting codes. Human speech is only practical because it evolved with redundancy. Redundancy can be experimentally verified and for English, it is about 0.7. This means that 70\% of the bandwidth is redundant and only 30\% carries information. Redundancy is also tied to compressibility. Most natural languages compress to around 30\% with non-specialized compression.
+
+In data transmission, we can add sufficient extra bits based on the expectation of the error rate. Adding 1 parity-bit for example, detects an error of one bit. In our language, we could have a rule that says that prohibits the voiced consonants B, J, G, C, D anywhere except word-initially. This would reduce the size of legal words to 22,000 and adding a redundancy of 0.4375. However, the trade off is dramatically easier communication. 
+
+\section{Ideal redundancy}
+
+The problem statement of language redundancy may be phrased as the attempt to add just enough redundancy, so that at least one phoneme is correctly detected. That is to say, we want to eliminate the chances that every single phoneme is perceived incorrectly by the listener.
+
+\section{Redundancy in practice}
+In natural languages, the pairs that require the most effort to distinguish are omitted from the language. The most common ones are the voice/unvoiced of the same articulation point. Words of the form \emph{paba} are rare but \emph{paca, paka} etc. occur more frequently. In the rare times these combinations occur, they occur with only instance, with one vowel. So you will see English `pub', but not 'pib' or 'pob'. That is to say, the redundancy is in the fewer vowels. However, when the articulations are at different points, more vowels can be used as in 'pat', 'pet', 'pit', 'pot', 'put', since the redundancy is at the articulation point. Note that languages that use ablauts don't have the flexibility to use vowels for redundancy, so the consonant redundancy is always primary. Vowels are also highly susceptible to drift and accents, so they are unreliable sources of redundancy.
+
+Grassmann's law is another, where there is a forced deaspiration in the first syllable when two aspirated syllables occur together(\cite{grassman}). In Sanskrit, words where the first syllable is unaspirated-unvoiced but the second is aspirated-voiced at the same articulation point are also prohibited by phonotactics.
+
+There are similar prohibitions on semivowels. For example, while \emph{ya} can be copiously followed by \emph{va}, it can never be followed by \emph{la}.
+
+We can first analyze how roots and stems have redundancy. It's easy to see that \emph{paba} can become \emph{bapa} very easily by shifting the perception of the voiced consonant to one syllable. This shift changes both syllables and becomes a derangement. This means that languages are unlikely to have either of these words.
+
+Voicing and aspiration do not really add too many words in a language for this reason. Some languages like Tamil treat aspiration and voicing as allophones and don't seem to suffer any negative impact. However, languages like Sanskrit where vowel length and quality carry a lot of information benefit from having voiced and aspirated plosives and affricates.
+
+Inserting a semivowel, nasal or sibilant between two plosives or doubling the second consonant is a simple way to add redundancy at low cost, therefore words like \emph{bāṣpa}, \emph{bappa} are more likely to be legal words. The inserted phonemes give sufficient information for the perception organs to distinguish the voiced vs unvoiced phonemes. This is akin to selecting from a non-derangement set at the cost of 70\% redundancy.
+
+The other major source of redundancy are affixes. In general, the number of affixes is small compared to the combinations of phonemes of a given length. Even a single VC slot can be filled with 100 affixes but most languages may have \~{}20 VC style affixes, so that's an 80\% redundancy. Affixes are used to express grammatical constructs like subject-verb agreement, which add to the redundancy and help in comprehension. This is described in detail in \cite{pijpops}
+
+\section{Ideal Redundancy}
+The set of permutations where every member is incorrect is called a derangement. For a word with phonemes of length n, the derangement is denoted as $!n$. The permutations of all symbols would be $n!$ The fraction of all words where every phoneme is perceived incorrectly would be \[\frac{!n}{n!} = \frac{1}{e}\]. This value is true for words of any length $> 2$, so the fraction of the total words in the language would always have the same value.
+
+The quantity $1 - \frac{1}{e} \approx 0.63 $ would represent the amount of syllables added to ensure that the words are perceived with at least one phoneme accurately. Therefore, this minimum fraction that must be added to the pure information of the language. In noisy environments, the redundancy would need to be higher. Compactness of the language rules also requires adding some more redundancy. Fusional languages are likely to have slightly lower redundancy than agglutinative ones for this reason.
+
+\section{Summary}
+The ideal redundancy of a natural language is $1-\frac{1}{e}$. Any lower, the speech elements won't be easily discerned. Any higher would be a waste of bandwidth. Natural languages have evolved to be close to the ideal redundancy for speech in mildly noisy environments. This is accomplished by adding sufficient redundancy to avoid words from the derangement set.
+
+\printbibliography
+\end{document}
